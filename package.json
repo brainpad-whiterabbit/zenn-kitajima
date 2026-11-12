@@ -5,7 +5,8 @@
   "scripts": {
     "lint": "npm run lint:text && npm run lint:md",
     "lint:text": "node scripts/lint-text.mjs",
-    "lint:md": "markdownlint-cli2"
+    "lint:md": "markdownlint-cli2",
+    "new:article": "node scripts/new-article.mjs"
   },
   "devDependencies": {
     "markdownlint-cli2": "^0.24.1",
