@@ -12,7 +12,7 @@ after:
     - t13
   t15:
     - t14
-pending_approval: true
+pending_approval: false
 details:
   t9:
     scope: 1本目の本文6節と出典リンクまで。図とスクリーンショットは置き場所の TODO だけ
@@ -38,3 +38,5 @@ details:
     scope: 人による2本目のレビューの指摘の反映と TODO の解消
     approach: t11 と同じ進め方で反映する
     tier: light
+approved_by: Eiki Kitajima/agent
+approved_at: 2026-11-12T13:07:29Z
