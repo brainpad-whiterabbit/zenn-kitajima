@@ -1,0 +1,27 @@
+# 記事の lint（npm run lint）を PR と main への push で実行する。
+# Node は jdx/mise-action が .mise.toml から入れるため、ローカルと同じバージョンで検査する。
+name: lint
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: jdx/mise-action@v5
+      - run: node --version
+      - run: npm ci
+      - run: npm run lint
