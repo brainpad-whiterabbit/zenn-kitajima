@@ -2,7 +2,15 @@
   "name": "zenn-kitajima",
   "private": true,
   "description": "Zenn Publication (brainpad) の記事リポジトリ",
+  "scripts": {
+    "lint": "npm run lint:text && npm run lint:md",
+    "lint:text": "node scripts/lint-text.mjs",
+    "lint:md": "markdownlint-cli2"
+  },
   "devDependencies": {
+    "markdownlint-cli2": "^0.24.1",
+    "textlint": "^15.8.0",
+    "textlint-rule-preset-ja-technical-writing": "^12.0.2",
     "zenn-cli": "^0.5.15"
   }
 }
