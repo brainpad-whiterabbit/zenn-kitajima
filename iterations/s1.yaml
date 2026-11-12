@@ -2,5 +2,8 @@ id: s1
 project: default
 name: 初期構築
 goal: 記事を書き始められる状態にする（プレビュー、記事作成コマンド、lint と CI、運用ルール、Zenn 連携）
-status: active
+status: closed
 started_at: 2026-11-12T11:47:02Z
+closed_at: 2026-11-12T12:54:13Z
+completed: 8
+carried_over: 0
