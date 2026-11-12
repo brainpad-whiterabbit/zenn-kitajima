@@ -1,0 +1,40 @@
+id: p4
+project: default
+tickets: [t9, t10, t13, t11, t14, t15]
+after:
+  t10:
+    - t9
+  t13:
+    - t9
+  t11:
+    - t10
+  t14:
+    - t13
+  t15:
+    - t14
+pending_approval: true
+details:
+  t9:
+    scope: 1本目の本文6節と出典リンクまで。図とスクリーンショットは置き場所の TODO だけ
+    approach: mise run new -- agentic-agile-deguboard で作り、MS ブログと MANIFESTO.md を読んでから、チケットの構成どおりに書く
+    tier: standard
+  t10:
+    scope: 1本目の役割分担の図と deguboard の画面のスクリーンショット
+    approach: 図は Mermaid か SVG で作る。スクリーンショットは dg serve の画面を撮り、撮れない画面は人に頼む
+    tier: standard
+  t13:
+    scope: 2本目の本文7節。図とスクリーンショットは置き場所の TODO だけ
+    approach: mise run new -- deguboard-usage で作り、e1 の実データと dg の実際の出力を引用して書く
+    tier: standard
+  t11:
+    scope: 人による1本目のレビューの指摘の反映と TODO の解消
+    approach: 人に指摘をもらい、PR 上で反映する。反映しないものは理由を PR に書く
+    tier: light
+  t14:
+    scope: 2本目のデータの単位の関係図とハンズオン各段階のスクリーンショット
+    approach: t10 と同じ作り方で用意する
+    tier: standard
+  t15:
+    scope: 人による2本目のレビューの指摘の反映と TODO の解消
+    approach: t11 と同じ進め方で反映する
+    tier: light
