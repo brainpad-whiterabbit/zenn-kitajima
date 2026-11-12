@@ -1,0 +1,8 @@
+{
+  "name": "zenn-kitajima",
+  "private": true,
+  "description": "Zenn Publication (brainpad) の記事リポジトリ",
+  "devDependencies": {
+    "zenn-cli": "^0.5.15"
+  }
+}
