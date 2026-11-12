@@ -1,0 +1,14 @@
+{
+  // Zenn の記事を検査する。記事のタイトルは frontmatter の title にあり、本文は H2 から始める
+  "config": {
+    "default": true,
+    // 本文に H1 を置かないため、先頭行の見出しを要求しない
+    "MD041": false,
+    // 日本語の文章は 1 行が長くなるため、行の長さを制限しない
+    "MD013": false,
+    // Zenn は行に URL だけを書くとリンクカードとして埋め込むため、裸の URL を許す
+    "MD034": false
+  },
+  // Zenn の記事は articles/ の直下に置くため、textlint（scripts/lint-text.mjs）と同じく直下だけを検査する
+  "globs": ["articles/*.md"]
+}
