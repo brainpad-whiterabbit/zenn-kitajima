@@ -1,0 +1,25 @@
+{
+  "id": "r20261112-120219-635b",
+  "ticket": "t3",
+  "step": "fix",
+  "agent": "claude-code",
+  "model": "claude-opus-5-5",
+  "started_at": "2026-11-12T12:02:19Z",
+  "finished_at": "2026-11-12T12:06:18Z",
+  "result": "success",
+  "error": null,
+  "retries": 2,
+  "retry_reasons": [
+    "句点の許容にコロンを加えたため、ブロック直前やコロンで終わる文の句点抜けが検出されない",
+    "textlint と markdownlint の検査範囲が食い違い、記事ディレクトリがないと例外で落ちる"
+  ],
+  "usage": {
+    "input": null,
+    "output": null,
+    "cache_read": null,
+    "cache_write": null
+  },
+  "tools": null,
+  "session": "80578abc-650d-42e2-b30d-084da816da46",
+  "review": null
+}
