@@ -1,0 +1,5 @@
+id: s1
+project: default
+name: 初期構築
+goal: 記事を書き始められる状態にする（プレビュー、記事作成コマンド、lint と CI、運用ルール、Zenn 連携）
+status: planned
