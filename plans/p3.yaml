@@ -6,7 +6,7 @@ after:
     - t7
   t8:
     - t5
-pending_approval: true
+pending_approval: false
 details:
   t6:
     scope: あなたが Zenn の画面で行う連携設定と確認。リポジトリの変更はない
@@ -23,3 +23,5 @@ details:
     scope: yomiyasu スキルのリポジトリへの導入、安全性の確認、CLAUDE.md への推敲ルール 1 行と版・更新手順の追記まで
     approach: npx skills add で .claude/skills/yomiyasu に入れ、.gitignore の .claude/skills/ に例外を足してコミットする。t5 の CLAUDE.md に追記する
     tier: standard
+approved_by: Eiki Kitajima/agent
+approved_at: 2026-11-12T12:17:09Z
