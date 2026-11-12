@@ -6,6 +6,7 @@ AI エージェント向けのルールです。リポジトリの構成、slug 
 
 - コマンドは `mise run <task>` で実行します（`install` / `preview` / `new` / `lint`）。npm scripts を直接の入口にしません
 - 記事は `mise run new -- <topic>` で作ります（slug、Publication、`published: false` が入ります）
+- 記事の日本語を書いたり直したりするときは常に yomiyasu で推敲します（`.claude/skills/yomiyasu/`。版と更新手順は README の「スキル」）
 - worktree のフォルダ名やブランチ名に `mise-tasks` を含めません（mise 2026.11 がそのディレクトリをタスクのディレクトリとして扱い、動かなくなります）
 
 ## AI は published を true にしない

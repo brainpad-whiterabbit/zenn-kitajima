@@ -12,6 +12,7 @@ scripts/            mise タスクから呼ぶスクリプト（記事の作成�
 .textlintrc.yml     textlint の設定
 .markdownlint-cli2.jsonc  markdownlint の設定
 .github/workflows/  PR と main への push で lint を実行する CI
+.claude/skills/yomiyasu/  記事の日本語を推敲する Claude Code のスキル（外部のもの）
 ```
 
 `books/`（本）はまだ使っていません。
@@ -76,6 +77,23 @@ mise run lint
   - 閉じの `:::` は、直前の行が「。」か数式の `$$` で終わるときだけ除外します。句点のない文の直後の閉じは除外しないため、句点の抜けは報告されます
 - `:::` ブロックの中でも、コードブロックとリストの前後には空行を入れます（markdownlint の MD031 / MD032）
 - 行に URL だけを書くと Zenn がリンクカードとして埋め込むため、裸の URL を許可しています（MD034 を無効化）
+
+## スキル
+
+記事の日本語は、Claude Code のスキル [yomiyasu](https://github.com/nanaism/yomiyasu)（MIT ライセンス。`.claude/skills/yomiyasu/LICENSE`）で推敲します。clone すれば同じスキルが使えます。Claude Code で `/yomiyasu` と頼むと、AI っぽい言い回しを意味を変えずに直し、付属の Python スクリプト（`python3` が必要）で検査します。
+
+- 入れている版: v3.1.0（コミット `db78b9bc5e868549b517a037df7a4d1c93edac23`）
+- 検査の記録は `.yomiyasu/` にでき、git には入りません
+
+更新は次のコマンドで行います。mise タスクではない一度きりのツールの実行なので、`mise exec` で mise の Node を使って `npx` を直接呼びます。上流の既定ブランチの最新が入ります。`skills` の CLI は利用統計を送ることがあるため、環境変数で切って実行します。
+
+```sh
+DISABLE_TELEMETRY=1 DO_NOT_TRACK=1 mise exec -- npx skills@1.8.1 add nanaism/yomiyasu --agent claude-code -y
+```
+
+更新したら、差分（とくに `scripts/` と SKILL.md の `allowed-tools`）を読んで外部への送信や危険な処理がないことを確かめ、上の版とコミットを書き換えてからコミットします。コマンドが作る `skills-lock.json` は git に入りません。
+
+`mise run lint`（textlint）は、箇条書きの文末を「である」調にするよう求めます。yomiyasu は文体を原文のままにするため、敬体の箇条書きは推敲のあとも lint で報告されます。そのときは箇条書きの文末を常体にそろえます。
 
 ## 公開
 
