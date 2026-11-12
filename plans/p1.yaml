@@ -1,0 +1,42 @@
+id: p1
+project: default
+tickets: [t1, t3, t2, t4, t6, t5]
+after:
+  t3:
+    - t1
+  t2:
+    - t1
+    - t3
+  t4:
+    - t3
+  t6:
+    - t1
+  t5:
+    - t2
+    - t4
+pending_approval: true
+details:
+  t1:
+    scope: mise による Node 固定、zenn-cli 導入、articles/ と images/ の作成、.gitignore 更新まで。lint と記事作成コマンドは含まない
+    approach: mise use で Node LTS を .mise.toml に固定し、npm で zenn-cli を devDependencies に入れて npx zenn preview の起動を確認する
+    tier: standard
+  t3:
+    scope: textlint（日本語技術文書プリセット）と markdownlint の設定と npm run lint まで。CI は含まない
+    approach: textlint-rule-preset-ja-technical-writing と markdownlint-cli2 を入れ、Zenn 記法と衝突するルールだけ設定で調整する
+    tier: standard
+  t2:
+    scope: new:article スクリプトと slug 検証、images/<slug>/ の作成まで
+    approach: 依存を増やさない Node スクリプトで日付と topic から slug を作って検証し、Zenn の frontmatter テンプレートを書き出す
+    tier: standard
+  t4:
+    scope: PR で npm run lint を実行する GitHub Actions のワークフロー 1 本
+    approach: jdx/mise-action で .mise.toml の Node を使い、npm ci のあと npm run lint を実行する
+    tier: light
+  t6:
+    scope: あなたが Zenn の画面で行う連携設定と確認。リポジトリの変更はない
+    approach: t1 のマージ後に Zenn のダッシュボードで GitHub 連携と Publication 所属を確認し、結果をチケットに記録する
+    tier: light
+  t5:
+    scope: README と CLAUDE.md の新規作成。記事チケットの方針とリリース手順を含む
+    approach: t2、t3、t4 で決まったコマンドと設定を読み返し、t5 の本文にある方針をそのまま CLAUDE.md に移す
+    tier: light
