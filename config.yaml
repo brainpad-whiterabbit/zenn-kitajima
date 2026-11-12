@@ -6,9 +6,6 @@ actions:
   shell: false
   test:
     - mise
-    - exec
-    - --
-    - npm
     - run
     - lint
   light_test: []
