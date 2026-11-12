@@ -9,5 +9,6 @@
     // Zenn は行に URL だけを書くとリンクカードとして埋め込むため、裸の URL を許す
     "MD034": false
   },
-  "globs": ["articles/**/*.md"]
+  // Zenn の記事は articles/ の直下に置くため、textlint（scripts/lint-text.mjs）と同じく直下だけを検査する
+  "globs": ["articles/*.md"]
 }
