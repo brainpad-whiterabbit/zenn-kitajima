@@ -26,6 +26,10 @@ AI は `published: false` の記事だけを扱います。`published` を `true
 - 公開チケットは人が担当し、ほかの工程すべてに depends_on します。公開チケットで `published` を `true` にして main にマージします
 - 記事を跨ぐ作業（lint の設定、テンプレート、README など）は記事の Epic に入れません
 
+## 監査は行わない
+
+このリポジトリでは監査（dgaudit）を行いません。dgall で進めるときも audit の段階は飛ばし、work の次は release に進みます。
+
 ## リリース手順
 
 dgrelease はこの節に従います。
