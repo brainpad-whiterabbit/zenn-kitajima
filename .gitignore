@@ -1,3 +1,8 @@
-.claude/skills/
+# dg が入れるスキルは無視し、リポジトリで共有する yomiyasu だけを追跡する
+.claude/skills/*
+!.claude/skills/yomiyasu/
 .claude/settings.local.json
 node_modules/
+# yomiyasu の検査スクリプトが git の最上位に作る状態フォルダと、npx skills add が作るロックファイル
+.yomiyasu/
+skills-lock.json
