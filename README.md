@@ -85,10 +85,10 @@ mise run lint
 - 入れている版: v3.1.0（コミット `db78b9bc5e868549b517a037df7a4d1c93edac23`）
 - 検査の記録は `.yomiyasu/` にでき、git には入りません
 
-更新は次のコマンドで行います。mise タスクではない一度きりのツールの実行なので、`mise exec` で mise の Node を使って `npx` を直接呼びます。上流の既定ブランチの最新が入ります。
+更新は次のコマンドで行います。mise タスクではない一度きりのツールの実行なので、`mise exec` で mise の Node を使って `npx` を直接呼びます。上流の既定ブランチの最新が入ります。`skills` の CLI は利用統計を送ることがあるため、環境変数で切って実行します。
 
 ```sh
-mise exec -- npx skills@1.8.1 add nanaism/yomiyasu --agent claude-code -y
+DISABLE_TELEMETRY=1 DO_NOT_TRACK=1 mise exec -- npx skills@1.8.1 add nanaism/yomiyasu --agent claude-code -y
 ```
 
 更新したら、差分（とくに `scripts/` と SKILL.md の `allowed-tools`）を読んで外部への送信や危険な処理がないことを確かめ、上の版とコミットを書き換えてからコミットします。コマンドが作る `skills-lock.json` は git に入りません。
