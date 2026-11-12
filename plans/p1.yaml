@@ -14,7 +14,7 @@ after:
   t5:
     - t2
     - t4
-pending_approval: true
+pending_approval: false
 details:
   t1:
     scope: mise による Node 固定、zenn-cli 導入、articles/ と images/ の作成、.gitignore 更新まで。lint と記事作成コマンドは含まない
@@ -40,3 +40,5 @@ details:
     scope: README と CLAUDE.md の新規作成。記事チケットの方針とリリース手順を含む
     approach: t2、t3、t4 で決まったコマンドと設定を読み返し、t5 の本文にある方針をそのまま CLAUDE.md に移す
     tier: light
+approved_by: Eiki Kitajima/agent
+approved_at: 2026-11-12T11:48:05Z
