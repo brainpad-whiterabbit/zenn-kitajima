@@ -1,0 +1,7 @@
+# dg のマージドライバ（frontmatter と YAML をフィールド単位でマージする）
+tickets/*.md merge=deguboard
+tickets/deleted/*.md merge=deguboard
+epics/*.md merge=deguboard
+plans/*.yaml merge=deguboard
+iterations/*.yaml merge=deguboard
+projects/*.yaml merge=deguboard

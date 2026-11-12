@@ -1,0 +1,27 @@
+# General のワークフロー。dg init が同梱のテンプレートから置いた
+
+id: general
+name: General
+transitions: []
+reconcile:
+  - when:
+      - branch_merged
+    status: done
+  - when:
+      - branch_exists
+    status: in_progress
+fields: []
+steps:
+  - id: investigate
+    label: Investigate
+  - id: implement
+    label: Implement
+    actions:
+      - create_worktree
+      - create_branch
+    opens_on: claim
+  - id: review
+    label: Review
+  - id: fix
+    label: Fix
+    opens_on: reclaim
