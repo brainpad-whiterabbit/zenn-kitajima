@@ -1,0 +1,28 @@
+id: p2
+project: default
+tickets: [t2, t4, t6, t7, t5]
+after:
+  t7:
+    - t2
+    - t4
+  t5:
+    - t7
+pending_approval: true
+details:
+  t2:
+    scope: "new:article スクリプトと slug 検証、images/<slug>/ の作成まで（実装済み、PR #4）"
+    tier: standard
+  t4:
+    scope: PR で lint を実行する GitHub Actions のワークフロー 1 本（実装中）
+    tier: light
+  t6:
+    scope: あなたが Zenn の画面で行う連携設定と確認。リポジトリの変更はない
+    tier: light
+  t7:
+    scope: .mise.toml に preview、new、lint のタスクを定義し、CI と dg の actions.test を mise run lint に切り替える
+    approach: mise タスクは既存の npm scripts とスクリプトを呼ぶ薄い入口にし、CI は mise-action のあと mise run lint を実行する
+    tier: standard
+  t5:
+    scope: "README と CLAUDE.md の新規作成。記事チケットの方針、リリース手順、mise タスクでのコマンド、::: の lint 例外の理由を含む"
+    approach: t2、t3、t4、t7 で決まったコマンドと設定を読み返し、手順はすべて mise run で書く
+    tier: light
