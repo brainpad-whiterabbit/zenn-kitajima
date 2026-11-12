@@ -1,5 +1,5 @@
-# 記事の lint（npm run lint）を PR と main への push で実行する。
-# Node は jdx/mise-action が .mise.toml から入れるため、ローカルと同じバージョンで検査する。
+# 記事の lint（mise run lint）を PR と main への push で実行する。
+# Node は jdx/mise-action が .mise.toml から入れるため、ローカルと同じバージョンとタスクで検査する。
 name: lint
 
 on:
@@ -23,5 +23,5 @@ jobs:
       - uses: actions/checkout@v7
       - uses: jdx/mise-action@v5
       - run: node --version
-      - run: npm ci
-      - run: npm run lint
+      - run: mise run install
+      - run: mise run lint
