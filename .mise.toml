@@ -1,2 +1,22 @@
 [tools]
 node = "24.22.3"
+
+# リポジトリで使うコマンドの入口。中身は npm scripts と scripts/ を呼ぶだけにする。
+# 一覧は mise tasks で見られる。
+
+[tasks.install]
+description = "依存パッケージを package-lock.json のとおりに入れる（npm ci）"
+run = "npm ci"
+
+[tasks.preview]
+description = "記事をブラウザでプレビューする（zenn preview、http://localhost:8000）"
+run = "npx zenn preview"
+
+[tasks.new]
+description = "日付付き slug の下書き記事と画像フォルダを作る（mise run new -- <topic>）"
+usage = 'arg "<topic>" help="slug の日付のあとに付ける名前（a-z、0-9、-、_）"'
+run = 'npm run --silent new:article -- {{usage.topic | quote}}'
+
+[tasks.lint]
+description = "記事を textlint と markdownlint で検査する"
+run = "npm run lint"

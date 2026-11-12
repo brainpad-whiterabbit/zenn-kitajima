@@ -1,5 +1,5 @@
 // 日付付きの slug（YYYYMMDD-<topic>）で、Publication（brainpad）を指定した下書きの記事を作る。
-// 使い方: npm run new:article -- <topic>
+// 使い方: mise run new -- <topic>（中身は npm run new:article -- <topic>）
 // articles/<slug>.md と、記事の画像を置く images/<slug>/（コミットできるよう .gitkeep 入り）を作る。
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -15,7 +15,7 @@ const fail = (message) => {
 
 const args = process.argv.slice(2);
 if (args.length !== 1 || args[0] === "") {
-  fail("topic を 1 つ指定してください（例: npm run new:article -- zenn-setup）");
+  fail("topic を 1 つ指定してください（例: mise run new -- zenn-setup）");
 }
 const topic = args[0];
 
