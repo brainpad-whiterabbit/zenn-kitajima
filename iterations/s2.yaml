@@ -1,0 +1,5 @@
+id: s2
+project: default
+name: 初記事の執筆
+goal: "記事2本（e2: Agentic-Agile とその実践ツール deguboard、e3: deguboard の使い方）の下書きを、レビューの指摘を反映し終えて公開できる状態にする（公開は人が担当し、この Iteration には含めない）"
+status: planned
