@@ -7,7 +7,7 @@ after:
     - t4
   t5:
     - t7
-pending_approval: true
+pending_approval: false
 details:
   t2:
     scope: "new:article スクリプトと slug 検証、images/<slug>/ の作成まで（実装済み、PR #4）"
@@ -26,3 +26,5 @@ details:
     scope: "README と CLAUDE.md の新規作成。記事チケットの方針、リリース手順、mise タスクでのコマンド、::: の lint 例外の理由を含む"
     approach: t2、t3、t4、t7 で決まったコマンドと設定を読み返し、手順はすべて mise run で書く
     tier: light
+approved_by: Eiki Kitajima/agent
+approved_at: 2026-11-12T12:13:16Z
