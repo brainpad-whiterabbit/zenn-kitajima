@@ -37,7 +37,7 @@ Agentic-Agile は、2026年5月19日に Microsoft Developer Blog で紹介され
 - マニフェスト：[Toward an Agentic-Agile Manifesto（MANIFESTO.md）](https://github.com/microsoft/agentic-agile-template/blob/main/MANIFESTO.md)
 - テンプレート：[microsoft/agentic-agile-template](https://github.com/microsoft/agentic-agile-template)
 
-<!-- TODO: 要確認 マニフェストの署名は「The Agentic-Agile Team and Minthe (GitHub Copilot with Claude), 2026」。「Daniel Epstein さんが提唱」と書いてよいか、チームとしての提唱と書くべきかを確認する -->
+<!-- TODO: 要確認 マニフェストの署名は「The Agentic-Agile Team and Minthe (GitHub Copilot with Claude), 2026」。「Daniel Epstein さんが提唱」と書いてよいか、チームとしての提唱と書くべきかを確認する。決めたら「まとめ」の1つ目の紹介の書き方も合わせて直す -->
 
 ブログでは Agentic-Agile Development を「人間とエージェントによる開発に、アジャイルのエンジニアリングの実践を当てはめたもの」と定義しています。マニフェストでは「構造化された人間とエージェントの協働によって、本番に出せるソフトウェアを作る実践」と説明しています。アジャイルソフトウェア開発宣言を置き換えるものではなく、その発展だという位置づけです。
 
@@ -105,7 +105,7 @@ deguboard では人間とエージェントの役割を次のように分けて�
 
 #### 誰が操作したかを記録する
 
-すべての操作に `--actor human` か `--actor agent` を付けます。人間は `<user>`、エージェントは `<user>/agent` として記録されるので、チケットを作ったのが自分か自分のエージェントかを区別できます。
+操作ごとに actor（human か agent）を記録します。`--actor` を省くと環境変数 DEGUBOARD_ACTOR の値になり、それもなければ human になります。エージェントは毎回 `--actor agent` を付けます。人間は `<user>`、エージェントは `<user>/agent` として記録されるので、チケットを作ったのが自分か自分のエージェントかを区別できます。
 
 #### 人間だけに許す操作
 
@@ -131,7 +131,9 @@ VS Code の拡張機能で、左のパネルとエディタのパネルにかん
 
 - PR があるか
 - レビューが通ったか
-- 受け入れ条件にチェックが付いたか
+- 修正の回数が上限以内か
+- 受け入れ条件にチェックが付いたか（マージ前だけ）
+- マージ前に衝突がないか
 - 設定したチェックのコマンド（テストや lint）が通るか
 
 このうちどれを判定するかは、チケットごとのゲートの段階（high / low / free）で変わります。`dg pr ready` と `dg pr merge` は、その判定を通ったときだけ PR を進めます。
@@ -156,7 +158,7 @@ deguboard で1つの Iteration を回す流れは、おおまかに次のとお�
 ## まとめ
 
 - AI コーディングで速く書けるようになった分、判断の経緯や確かめたことが残らない負債も溜まりやすくなった
-- その向き合い方の1つとして、Microsoft で提唱された Agentic-Agile がある。仕様を中心に置き、判断と承認を人間が持ち、レビューを工程に組み込む
+- その向き合い方の1つとして、Microsoft Developer Blog で紹介された Agentic-Agile がある。仕様を中心に置き、判断と承認を人間が持ち、レビューを工程に組み込む
 - deguboard は Agentic-Agile を実践するために作っている Git ネイティブなかんばんで、チケット、計画と承認、作業記録を Git の deguboard ブランチに残す
 
 ### 入手方法
