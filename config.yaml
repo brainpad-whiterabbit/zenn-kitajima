@@ -2,3 +2,14 @@ default_project: default
 git:
   remote: origin
   base_branch: main
+actions:
+  shell: false
+  test:
+    - mise
+    - exec
+    - --
+    - npm
+    - run
+    - lint
+  light_test: []
+  light_paths: []
