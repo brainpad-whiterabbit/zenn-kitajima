@@ -1,0 +1,22 @@
+{
+  "id": "r20261112-132328-9a3a",
+  "ticket": "t10",
+  "step": "implement",
+  "agent": "claude-code",
+  "model": "claude-opus-5-5",
+  "started_at": "2026-11-12T13:23:28Z",
+  "finished_at": "2026-11-12T13:29:03Z",
+  "result": "success",
+  "error": null,
+  "retries": 0,
+  "retry_reasons": [],
+  "usage": {
+    "input": null,
+    "output": null,
+    "cache_read": null,
+    "cache_write": null
+  },
+  "tools": null,
+  "session": "8aca3cc2-e0f6-4a46-964b-e02457000878",
+  "review": null
+}
