@@ -174,4 +174,4 @@ sequenceDiagram
 
 個人的に気に入ったので、これからも使い続けるつもりです。Agentic-Agile は良い開発手法だと感じているので、deguboard とは関係なくおすすめです。
 
-deguboard の内部の仕組みに興味があれば、[こちら](https://github.com/brainpad-whiterabbit/deguboard/blob/main/docs/how-it-works.ja.md)に少し載せているので見てみてください。
+deguboard の内部の仕組みに興味があれば、[こちら](https://github.com/brainpad-whiterabbit/deguboard/blob/v1.0.0/docs/how-it-works.ja.md)に少し載せているので見てみてください。
