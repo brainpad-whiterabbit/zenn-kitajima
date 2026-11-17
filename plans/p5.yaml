@@ -1,0 +1,9 @@
+id: p5
+tickets: [t18]
+after: {}
+pending_approval: true
+details:
+  t18:
+    scope: 1本目の本文と構成だけ。画像と GIF は TODO コメントにして t19 で用意する
+    approach: 作業ツリーで書き直して yomiyasu で推敲した本文を、そのまま t18 の作業ブランチに移して PR にする
+    tier: light
