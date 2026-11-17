@@ -1,0 +1,26 @@
+{
+  "id": "r20261117-084008-f527",
+  "ticket": "t18",
+  "step": "fix",
+  "agent": "claude-code",
+  "model": "claude-opus-5-5",
+  "started_at": "2026-11-17T08:40:08Z",
+  "finished_at": "2026-11-17T08:42:30Z",
+  "result": "success",
+  "error": null,
+  "retries": 2,
+  "retry_reasons": [
+    "振り返りの観点の名前が v1.0.0 の表示名と違う",
+    "Iteration に入れると実行順のツリーができると書いていて、v1.0.0 の計画の工程と合わない"
+  ],
+  "usage": {
+    "input": null,
+    "output": null,
+    "cache_read": null,
+    "cache_write": null
+  },
+  "tools": null,
+  "session": "114588e0-6f64-4bfa-871a-9ac1da623139",
+  "review": null,
+  "waited_seconds": null
+}
