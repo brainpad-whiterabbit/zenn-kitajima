@@ -4,6 +4,7 @@ AI エージェント向けのルールです。リポジトリの構成、slug 
 
 ## 基本ルール
 
+- リポジトリへの変更は、原則として dg のチケットにしてから行います（起票は dgimport、進めるのは dgplan と dgwork）。チケットのない変更を頼まれたときは、先に起票するかを確かめます
 - コマンドは `mise run <task>` で実行します（`install` / `preview` / `new` / `lint`）。npm scripts を直接の入口にしません
 - 記事は `mise run new -- <topic>` で作ります（slug、Publication、`published: false` が入ります）
 - 記事の日本語を書いたり直したりするときは常に yomiyasu で推敲します（`.claude/skills/yomiyasu/`。版と更新手順は README の「スキル」）
@@ -15,9 +16,7 @@ AI は `published: false` の記事だけを扱います。`published` を `true
 
 ## dg（deguboard）の運用
 
-- チケットを起票するときは `--workflow software-development` を付けます。プロジェクトの既定の `general` は squash マージを検出しないため、チケットが自動で閉じません
-- マージは squash だけです（GitHub で squash だけを許可し、マージ後のブランチは自動で削除されます）。マージは `dg pr merge` で行います
-- 品質ゲートの check（actions.test）は `mise run lint` です
+マージの方式（squash）、品質ゲートのコマンド（`mise run lint`）、監査（audit）を飛ばすことは、dg の設定（`dg config show`、`dg workflow show`）に入っています。ここには書きません。
 
 ### 記事チケットの方針
 
@@ -25,10 +24,6 @@ AI は `published: false` の記事だけを扱います。`published` を `true
 - チケットは PR 1 本で終わる工程ごとに切ります。工程は「構成案」「本文の執筆」「サンプルコードや図の作成と動作確認」「レビューの反映」「公開」です。規模に応じて統合や分割をしてかまいません
 - 公開チケットは人が担当し、ほかの工程すべてに depends_on します。公開チケットで `published` を `true` にして main にマージします
 - 記事を跨ぐ作業（lint の設定、テンプレート、README など）は記事の Epic に入れません
-
-## 監査は行わない
-
-このリポジトリでは監査（dgaudit）を行いません。dgall で進めるときも audit の段階は飛ばし、work の次は release に進みます。
 
 ## リリース手順
 
