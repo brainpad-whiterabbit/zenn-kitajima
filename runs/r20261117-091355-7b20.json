@@ -1,0 +1,25 @@
+{
+  "id": "r20261117-091355-7b20",
+  "ticket": "t18",
+  "step": "fix",
+  "agent": "claude-code",
+  "model": "claude-opus-5-5",
+  "started_at": "2026-11-17T09:13:55Z",
+  "finished_at": "2026-11-17T09:14:24Z",
+  "result": "success",
+  "error": null,
+  "retries": 1,
+  "retry_reasons": [
+    "人のレビューで、仕組みの説明へのリンクを v1.0.0 に固定するよう求められた"
+  ],
+  "usage": {
+    "input": null,
+    "output": null,
+    "cache_read": null,
+    "cache_write": null
+  },
+  "tools": null,
+  "session": "114588e0-6f64-4bfa-871a-9ac1da623139",
+  "review": null,
+  "waited_seconds": null
+}

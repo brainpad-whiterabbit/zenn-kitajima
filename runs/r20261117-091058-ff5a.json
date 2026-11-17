@@ -1,0 +1,25 @@
+{
+  "id": "r20261117-091058-ff5a",
+  "ticket": "t18",
+  "step": "fix",
+  "agent": "claude-code",
+  "model": "claude-opus-5-5",
+  "started_at": "2026-11-17T09:10:58Z",
+  "finished_at": "2026-11-17T09:11:42Z",
+  "result": "success",
+  "error": null,
+  "retries": 1,
+  "retry_reasons": [
+    "人のレビューで、流れの図の移動とアーキテクチャの図と Run の記録の範囲の図を求められた"
+  ],
+  "usage": {
+    "input": null,
+    "output": null,
+    "cache_read": null,
+    "cache_write": null
+  },
+  "tools": null,
+  "session": "114588e0-6f64-4bfa-871a-9ac1da623139",
+  "review": null,
+  "waited_seconds": null
+}

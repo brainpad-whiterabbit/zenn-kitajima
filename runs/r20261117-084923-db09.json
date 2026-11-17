@@ -1,0 +1,25 @@
+{
+  "id": "r20261117-084923-db09",
+  "ticket": "t18",
+  "step": "fix",
+  "agent": "claude-code",
+  "model": "claude-opus-5-5",
+  "started_at": "2026-11-17T08:49:23Z",
+  "finished_at": "2026-11-17T08:49:59Z",
+  "result": "success",
+  "error": null,
+  "retries": 1,
+  "retry_reasons": [
+    "人のレビューで、deguboard の README の図と GIF を記事に入れ、当てはまる図がない所に「<図>」の行を置くよう求められた"
+  ],
+  "usage": {
+    "input": null,
+    "output": null,
+    "cache_read": null,
+    "cache_write": null
+  },
+  "tools": null,
+  "session": "114588e0-6f64-4bfa-871a-9ac1da623139",
+  "review": null,
+  "waited_seconds": null
+}
