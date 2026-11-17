@@ -32,12 +32,19 @@ Agentic-Agile は本家のアジャイルと同じようにマニフェストを
 
 AI と開発するときのコツは、すでにいろいろ言われています。たとえば「Docs as Code が大事」「受け入れ条件を定義しよう」「大きな単位で丸投げしない」「設計だけは人間がやろう」などです。AI に守らせたい決まりを CLAUDE.md や Skill に書いた、という工夫もあります。このマニフェストは、それらをほぼ網羅しています。さらに、振り返りによる継続的な計測や、開発の流れに組み込んだガバナンスのように、これまであまり言及されてこなかったことも大事だと言語化してくれています。
 
+![人がチケット、計画、リリースを承認し、エージェントが並列に実装して振り返りまで進む開発の流れ](/images/20261112-agentic-agile-deguboard/flow.png)
+*筆者が解釈した、Agentic-Agile を実践する開発の流れ*
+
+:::message
+この図は Agentic-Agile そのものを表したものではありません。私が Agentic-Agile を実践するうえで解釈した開発の流れです。
+:::
+
 ## deguboard
 
 Agentic-Agile を実践するには、Claude Code の Skill やプラグインだけではカバーしきれず、何かしらの仕組みが要りそうです。そこで作ってみたのが deguboard です。普段は VS Code で開発しているので、VS Code の拡張機能にしました。
 
-![deguboard での開発の流れ。人がチケット、計画、リリースを承認し、エージェントが並列に実装する](/images/20261112-agentic-agile-deguboard/flow.png)
-*deguboard での開発の流れ*
+![deguboard のアーキテクチャ。人とエージェントは入口を通り、入口はすべて Core のコマンドを呼ぶ](https://raw.githubusercontent.com/brainpad-whiterabbit/deguboard/v1.0.0/docs/images/how-it-works.ja.svg)
+*deguboard のアーキテクチャ*
 
 :::message
 本家の Agentic-Agile にのっとっていない箇所や、言葉の定義の違う部分があります。あくまで私が Agentic-Agile を実践してみるための支援ツールです。
@@ -112,18 +119,53 @@ Claude に「こういう機能がほしいな」と相談して中身が決ま�
 
 決定的に動く仕組みが必要だということで、Claude Code のフックの機能を使い、なるべく正確に取れるようにしています。全体的に、プロンプト頼りにならない仕組みを考えています。
 
+次の図は、エージェントの1回の作業の記録（Run）がどこからどこまでかを示したものです。色の付いた区間がそれぞれ1つの Run です。
+
 ```mermaid
 sequenceDiagram
-  participant P as 親のエージェント
-  participant K as Claude Code のフック
+  participant H as 人
+  participant P as 親セッション
+  participant K as Hooks (Claude Code)
   participant D as dg
   participant S as サブエージェント
 
-  P->>S: 目印を付けて実装を頼む
-  K->>D: 作業の記録（Run）を開く
-  S->>D: PR を作る
-  K->>D: サブエージェントが止まったとき、PR があれば Run を閉じる
-  D->>D: サブエージェントの会話記録からトークンを数える
+  Note over P,D: どの Run にも入らない（親の作業）
+  K->>P: セッションの開始で主体とセッション ID を環境に入れる
+  P->>D: ticket claim --no-run --approved-by human（todo → in_progress）
+
+  rect rgba(80,140,255,0.18)
+  Note over K,S: Run 1 — implement（使用量はサブエージェントの会話記録だけ）
+  P->>S: 印「deguboard: ticket=t12 step=implement」を付けて起動
+  K->>D: Run を開く（開始は起動の時刻）
+  S->>D: gate --only check・draft PR
+  S-->>P: 質問して止まる
+  P-->>S: 答える（同じ Run の続き。待った時間は別に数える）
+  K->>D: 止まったとき PR がある → Run を閉じる
+  end
+
+  P->>D: 受け入れ条件の印・PR の番号を記録
+
+  rect rgba(255,170,60,0.18)
+  Note over K,S: Run 2 — review
+  P->>S: 印 step=review を付けて起動
+  K->>D: Run を開く
+  S->>D: run review-result（指摘の数・通ったか）
+  K->>D: 止まったとき結果がある → Run を閉じる
+  end
+
+  rect rgba(80,200,120,0.18)
+  Note over K,S: Run 3 — fix
+  P->>S: 印 step=fix を付けて起動
+  K->>D: Run を開く
+  S->>D: push・run retry-reason
+  K->>D: 止まったとき開始より後の push がある → Run を閉じる
+  end
+
+  Note over P,D: どの Run にも入らない
+  P->>D: pr ready（照合で in_progress → review）
+  H->>P: マージを承認
+  P->>D: pr merge・片付け（review → done）
+  K->>D: セッションの終わりに、開いたままのサブエージェントの Run を閉じる
 ```
 
 そもそも Agentic-Agile の支援ツールにはどんな機能が要り、どんな仕組みで実現すればよいかを考えるところからのスタートでした。マニフェストを見ながら、どの機能が大事で何を削るか、使い勝手を考えた画面のデザイン、カンバンのデータをどう管理するか、フックの仕様の調査などを進めました。VS Code の拡張機能として作るかどうかも、最初は決まっていませんでした。
