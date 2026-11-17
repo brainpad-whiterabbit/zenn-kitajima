@@ -9,3 +9,6 @@ actions:
     - lint
   light_test: []
   light_paths: []
+merge:
+  method: squash
+  delete_branch: true
